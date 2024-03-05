@@ -1,0 +1,12 @@
+Name: robotictools
+Version: 1.0.0
+Date: 2024-05-03
+Author: Michael Meinhold
+Maintainer: The name (and possibly email) of the current
+ package maintainer.
+Title: The title of the package
+Description: A short description of the package.  If this
+ description gets too long for one line it can continue
+ on the next by adding a space to the beginning of the
+ following lines.
+License: GPLv3+
