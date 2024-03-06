@@ -9,7 +9,15 @@
 
    ein und führen sie es aus.
 4. Um das Paket verwenden zu können, muss es in Octave noch geladen werden. Führen Sie dazu das Kommando
-   
+
        pkg load robotictools
-   
+
    aus.
+
+## Hinweise zur Nutzung des Paketes
+
+1. Das Quaternion q = 1+2i+2j+3k wird durch
+
+       q = quaternion ([1, 2, 3, 4])
+
+    erzeugt.  
