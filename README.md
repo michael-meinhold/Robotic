@@ -1,5 +1,12 @@
 # RoboticTools
 
+## Paket in tar.gz packen
+Wechseln Sie in das Verzeichnis, in dem sich der Ordner robotictools befindet und führen Sie in der Kommandozeile den Befehl
+
+       tar cfvz robotictools.tar.gz robotictools
+
+aus.     
+
 ## Installation in Octave
 1. Starten Sie Octave (Octave CLI oder Octave GUI)
 2. Wechseln Sie in das Verzeichnis, in dem sich das tar.gz-File des Paketes befindet.
