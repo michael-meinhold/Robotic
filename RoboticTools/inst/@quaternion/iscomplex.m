@@ -16,6 +16,12 @@
 ##    along with robotictools.  If not, see <http://www.gnu.org/licenses/>.
 
 
-function disp (q)
-  printf ("%f+(%f)*i+(%f)*j+(%f)*k\n", q.re, q.im(1), q.im(2), q.im(3));
+function v = iscomplex (a)
+  if ( a.im == [0, 0, 0] )
+    v = true;
+    return
+  else
+    v = false;
+    return
+  endif
 endfunction

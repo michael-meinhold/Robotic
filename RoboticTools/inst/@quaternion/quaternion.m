@@ -31,7 +31,18 @@
 ## @end example
 ##
 ## @noindent
-## from a vector of real components @var{x}=[x0 x1 x2 x3].
+## from a vector of complex valued components @var{x}=[x0 x1 x2 x3].
+## @end deftypefn
+##
+## @deftypefnx {} {} quaternion (@var{x0}, @var{x1}, @var{x2}, @var{x3})
+## Create a quaternion object representing the Quaternion
+##
+## @example
+## X0 + X1 * i + X2 * j + X3 * k
+## @end example
+##
+## @noindent
+## from reals @var{x0}, @var{x1}, @var{x2}, @var{x3}.
 ## @end deftypefn
 
 function q = quaternion (x)
@@ -41,15 +52,14 @@ function q = quaternion (x)
 
     if (nargin == 0)  # q=quaternion()
      q.re = 0;
-     q.im = struct ("x", 0, "y", 0, "z", 0);
+     q.im = [x(2), x(3), x(4)];
      q = class (q, "quaternion");
     else
       if (isa (x, "quaternion"))
         q = x;
-      elseif (isreal (x) && isvector (x))
+      elseif ((isreal (x) || iscomplex (x)) && isvector (x))
         q.re = x(1);
-        q.im = struct ("x", x(2), "y", x(3), "z", x(4));
-        q = class (q, "quaternion");
+        q.im = [x(2), x(3), x(4)];
         q = class (q, "quaternion");
       else
         error ("@quaternion: A must be a real vector");

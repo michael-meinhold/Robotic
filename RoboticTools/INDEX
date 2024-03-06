@@ -1,7 +1,11 @@
 robotictools >> RoboticTools
-Quaternions
+
+Quaternions constructors
  quaternion
+Quaternion methods
  disp
  re
+ im
+ quat2mat
   
  

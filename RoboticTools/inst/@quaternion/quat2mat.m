@@ -16,6 +16,8 @@
 ##    along with robotictools.  If not, see <http://www.gnu.org/licenses/>.
 
 
-function disp (q)
-  printf ("%f+(%f)*i+(%f)*j+(%f)*k\n", q.re, q.im(1), q.im(2), q.im(3));
+
+function m = quat2mat (q)
+  m = [q.re, q.im(1), q.im(2), q.im(3); -q.im(1), q.re, -q.im(3), q.im(2); -q.im(2), q.im(3), q.re, -q.im(1); -q.im(3), -q.im(2), q.im(1), q.re];
+  return
 endfunction

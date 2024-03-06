@@ -16,6 +16,7 @@
 ##    along with robotictools.  If not, see <http://www.gnu.org/licenses/>.
 
 
-function disp (q)
-  printf ("%f+(%f)*i+(%f)*j+(%f)*k\n", q.re, q.im(1), q.im(2), q.im(3));
+function q = minus (a, b)
+  q = quaternion ([a.re - b.re, a.im(1) - b.im(1), a.im(2) - b.im(2), a.im(3) - b.im(3)]);
+  return
 endfunction
