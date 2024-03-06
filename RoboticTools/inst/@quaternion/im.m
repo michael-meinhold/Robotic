@@ -16,6 +16,6 @@
 ##    along with robotictools.  If not, see <http://www.gnu.org/licenses/>.
 
 
-function r = re (q)
-  r = q.re;
+function imag = im (q)
+  imag = q.im;
 endfunction
