@@ -2,10 +2,22 @@ robotictools >> RoboticTools
 
 Quaternions constructors
  quaternion
+
 Quaternion methods
+ conjugate
  disp
- re
  im
- quat2mat
-  
+ iscomplex
+ norm
+
+Quaternion operator overload
+ minus
+ plus
+ mtimes
+
+Quaternion function overload
+ disp
+
+Quaternion conversions
+ quat2mat  
  
