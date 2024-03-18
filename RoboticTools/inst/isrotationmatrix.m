@@ -16,17 +16,20 @@
 ##    along with robotictools.  If not, see <http://www.gnu.org/licenses/>.
 
 
-function v = iscomplex (a, eps)
+function c = isrotationmatrix (R, eps)
   if (nargin == 1)
     eps = 1.0E-09;
   endif
 
-  if ( abs(a.re) < eps )
-    v = true;
-    return
-  else
-    v = false;
+  if (norm(R*R'-eye(3), "fro") >= eps)
+    c = false;
     return
   endif
 
+  if (abs(det(R) - 1.0) >= eps)
+    c = false;
+    return
+  endif
+
+  c = true;
 endfunction

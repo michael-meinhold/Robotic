@@ -16,17 +16,8 @@
 ##    along with robotictools.  If not, see <http://www.gnu.org/licenses/>.
 
 
-function v = iscomplex (a, eps)
-  if (nargin == 1)
-    eps = 1.0E-09;
-  endif
-
-  if ( abs(a.re) < eps )
-    v = true;
-    return
-  else
-    v = false;
-    return
-  endif
-
+function R = rodriguesmatrix (theta, v)
+  d = v/sqrt (dot(v,v));
+  d = d(:).';   #erzwinge d als Zeilenvektor
+  R = cos(theta)*eye(3) + (1-cos(theta))*(d'*d)+sin(theta)*[0,-d(3),d(2);d(3),0,-d(1);-d(2),d(1),0];
 endfunction

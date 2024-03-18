@@ -15,18 +15,15 @@
 ##    You should have received a copy of the GNU General Public License
 ##    along with robotictools.  If not, see <http://www.gnu.org/licenses/>.
 
-
-function v = iscomplex (a, eps)
+function v = getaxis (R, eps)
   if (nargin == 1)
     eps = 1.0E-09;
   endif
 
-  if ( abs(a.re) < eps )
-    v = true;
-    return
-  else
-    v = false;
-    return
+  if (isrotationmatrix(R, eps) == false)
+    error("@getangle: Matrix is not a rotationmatrix");
   endif
 
+  theta = getangle (R, eps);
+  v = 1/(2 * sin(getangle(R, eps))) * [R(3,2) - R(2,3); R(1,3) - R(3,1); R(2,1) - R(1,2)];
 endfunction

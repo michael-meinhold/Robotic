@@ -46,6 +46,7 @@
 ## @end deftypefn
 
 function q = quaternion (x)
+
     if (nargin > 1)
       print_usage ();
     endif

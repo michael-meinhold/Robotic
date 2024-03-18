@@ -20,5 +20,14 @@ Quaternion function overload
  disp
 
 Quaternion conversions
- quat2mat  
+ quat2mat
+ 
+Rotations methods
+ basistransformation
+ getangle
+ getaxis
+ isrotationmatrix
+ rodriguesmatrix
+  
+  
  
