@@ -24,6 +24,8 @@
 ## @end example
 ##
 ## @deftypefnx {} {} quaternion (@var{x})
+## Create the quaternion
+##
 ## Create a quaternion object representing the Quaternion
 ##
 ## @example
@@ -32,14 +34,6 @@
 ##
 ## @noindent
 ## from a vector of complex valued components @var{x}=[x0 x1 x2 x3].
-## @end deftypefn
-##
-## @deftypefnx {} {} quaternion (@var{x0}, @var{x1}, @var{x2}, @var{x3})
-## Create a quaternion object representing the Quaternion
-##
-## @example
-## X0 + X1 * i + X2 * j + X3 * k
-## @end example
 ##
 ## @noindent
 ## from reals @var{x0}, @var{x1}, @var{x2}, @var{x3}.

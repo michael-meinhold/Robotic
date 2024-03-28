@@ -15,7 +15,7 @@
 ##    You should have received a copy of the GNU General Public License
 ##    along with robotictools.  If not, see <http://www.gnu.org/licenses/>.
 
-function v = getaxis (R, eps)
+function v = getrotaxis (R, eps)
   if (nargin == 1)
     eps = 1.0E-09;
   endif
