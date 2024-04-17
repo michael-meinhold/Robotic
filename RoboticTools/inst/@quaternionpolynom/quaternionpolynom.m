@@ -16,12 +16,21 @@
 ##    along with robotictools.  If not, see <http://www.gnu.org/licenses/>.
 
 function p = quaternionpolynom (c)
-  if (isa(c, "quaternion") && isvector(c))
-    p.coeff = c;
-    p = class (p, "quaternionpolynom");
-  else
-    error("@quaternionpolynom: list of quaternions required.")
-  endif
+
+if (isa(c, "quaternion") && isvector(c))
+  d = 1;
+  for i = 1:length(c)
+    if (not(norm(c(i)) == 0))
+      d = i;
+    endif
+  endfor
+
+  c1 = c(1:d);
+  p.coeff = c1;
+  p = class (p, "quaternionpolynom");
+ else
+  error("@quaternionpolynom: list of quaternions required.")
+ endif
 endfunction
 
 

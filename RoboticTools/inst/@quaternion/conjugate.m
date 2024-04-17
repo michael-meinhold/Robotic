@@ -17,6 +17,7 @@
 
 
 function q = conjugate (a)
-  q = quaternion ([a.re, -a.im(1), -a.im(2), -a.im(3)]);
-  return
+  im = im(a);
+  re = re(a);
+  q = quaternion ([re, im(1)*(-1), im(2)*(-1), im(3)*(-1)]);
 endfunction

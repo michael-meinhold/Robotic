@@ -21,6 +21,13 @@ Quaternion function overload
 
 Quaternion conversions
  quat2mat
+
+Quaternionpolynom constructors
+ quaternionpolynom
+
+Quaternionpolynom function overload
+ disp
+ mtimes
  
 Rotations methods
  basistransformation

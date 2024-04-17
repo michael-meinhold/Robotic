@@ -17,25 +17,33 @@
 
 
 function q = mtimes (p1, p2)
-  n1 = length(p1.coeff);
-  n2 = length(p2.coeff);
-  n = max(n1,n2);
+  n1 = degree(p1) + 1;
+  n2 = degree(p2) + 1;
+  n = n1 + n2;
   c1 = [];
   c2 = [];
+  c = [];
 
   for i = 1:n
     if (i <= n1)
-      c1 = [c1(:), p1.coeff(i)];
+      c1 = [c1(:).', p1.coeff(i)];
     else
-      c1 = [c1(:), quaternion([0,0,0,0])];
+      c1 = [c1(:).', quaternion([0,0,0,0])];
     endif
     if (i <= n2)
-      c2 = [c2(:), p2.coeff(i)];
+      c2 = [c2(:).', p2.coeff(i)];
     else
-      c2 = [c2(:), quaternion([0,0,0,0])];
+      c2 = [c2(:).', quaternion([0,0,0,0])];
     endif
   endfor
-  c1
-  c2
-  q = p1;
+
+  for k = 1:n
+    d = quaternion([0,0,0,0]);
+    for i = 1:k
+      d = d + c1(i) * c2(k-i+1);
+    endfor
+    c = [c(:).', d];
+  endfor
+
+  q = quaternionpolynom(c);
 endfunction
