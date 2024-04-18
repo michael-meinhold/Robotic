@@ -21,7 +21,7 @@ function v = getrotaxis (R, eps)
   endif
 
   if (isrotationmatrix(R, eps) == false)
-    error("@getangle: Matrix is not a rotationmatrix");
+    error("@getrotaxis: Matrix is not a rotationmatrix");
   endif
 
   theta = getangle (R, eps);
