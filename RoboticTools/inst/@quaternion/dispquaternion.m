@@ -16,16 +16,38 @@
 ##    along with robotictools.  If not, see <http://www.gnu.org/licenses/>.
 
 
-function disp (q)
+function s = dispquaternion (p)
   s = [""];
-  if (isvector(q))
-    for i = 1:length(q)
-      if ( i == 1)
-        s = [s(:).', dispquaternion(q(i))];
-      else
-        s = [s(:).', ",", dispquaternion(q(i))];
-      endif
-    endfor
+
+  re = re(p);
+  im = im(p);
+
+  if (im(1) == 0)
+    im(1) = 0;
   endif
-  printf(s);
+  if (im(2) == 0)
+    im(2) = 0;
+  endif
+  if (im(3) == 0)
+    im(3) = 0;
+  endif
+
+  if (im(1) < 0)
+    v1 = "";
+  else
+    v1 = "+";
+  endif
+  if (im(2) < 0)
+    v2 = "";
+  else
+    v2 = "+";
+  endif
+  if (im(3) < 0)
+    v3 = "";
+  else
+    v3 = "+";
+  endif
+
+  s = [s, num2str(re), v1, num2str(im(1)), "*i", v2, num2str(im(2)), "*j", v3, num2str(im(3)), "*k"];
+  s;
 endfunction
