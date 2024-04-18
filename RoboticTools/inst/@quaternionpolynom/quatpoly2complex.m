@@ -15,17 +15,13 @@
 ##    You should have received a copy of the GNU General Public License
 ##    along with robotictools.  If not, see <http://www.gnu.org/licenses/>.
 
+function q = quatpoly2complex (p)
+  c = coeff(p);
+  cq = [];
 
-function disp (p)
-  s = [""];
-  if (isvector(p))
-    for i = 1:length(p)
-      if ( i == 1)
-        s = [s(:).', dispquatpoly(p(i))];
-      else
-        s = [s(:).', ",", dispquatpoly(p(i))];
-      endif
-    endfor
-  endif
-  printf(s);
+  for i = 1:length(c)
+    cq = [cq(:).', re(c(i))];
+  endfor
+  q = cq;
 endfunction
+

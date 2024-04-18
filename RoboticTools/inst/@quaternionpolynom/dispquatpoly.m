@@ -16,16 +16,47 @@
 ##    along with robotictools.  If not, see <http://www.gnu.org/licenses/>.
 
 
-function disp (p)
+function s = dispquatpoly (p)
+  n = length(p.coeff);
   s = [""];
-  if (isvector(p))
-    for i = 1:length(p)
-      if ( i == 1)
-        s = [s(:).', dispquatpoly(p(i))];
-      else
-        s = [s(:).', ",", dispquatpoly(p(i))];
-      endif
-    endfor
-  endif
-  printf(s);
+
+  for i = 1:n
+    c = p.coeff(i);
+    q0 = re(c);
+    q1 = im(c)(1);
+    q2 = im(c)(2);
+    q3 = im(c)(3);
+
+    if (q1 == 0)
+      q1 = 0;
+    endif
+    if (q2 == 0)
+      q2 = 0;
+    endif
+    if (q3 == 0)
+      q3 = 0;
+    endif
+
+    v1 = "+";
+    v2 = "+";
+    v3 = "+";
+
+    if (q1 < 0)
+      v1 = "";
+    endif
+    if (q2 < 0)
+      v2 = "";
+    endif
+    if (q3 < 0)
+      v3 = "";
+    endif
+
+    if ( not(i == n) )
+      s = [s, "(", num2str(q0) , v1, num2str(q1), "*i", v2, num2str(q2), "*j", v3, num2str(q3), "*k)*X^", num2str(i-1), "+"];
+    else
+      s = [s, "(", num2str(q0) , v1, num2str(q1), "*i", v2, num2str(q2), "*j", v3, num2str(q3), "*k)*X^", num2str(i-1)];
+    endif
+
+  endfor
+  s;
 endfunction

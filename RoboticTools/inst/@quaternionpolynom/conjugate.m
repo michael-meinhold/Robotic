@@ -15,15 +15,13 @@
 ##    You should have received a copy of the GNU General Public License
 ##    along with robotictools.  If not, see <http://www.gnu.org/licenses/>.
 
-
 function q = conjugate (p)
-  c = p.coeff;
-  n = length(c);
-  c_conjugate = [];
+  c = coeff(p);
+  cq = [];
 
-  for i = 1:n
-    c_conjugate = [c_conjugate, conjugate(c(i))];
+  for i = 1:length(c)
+    cq = [cq(:).', conjugate(c(i))];
   endfor
-
-  q = quaternionpolynom (c_conjugate);
+  q = quaternionpolynom(cq);
 endfunction
+
