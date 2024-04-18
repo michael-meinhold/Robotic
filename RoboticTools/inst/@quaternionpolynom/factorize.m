@@ -54,7 +54,7 @@ function F = factorize (p)
     n = degree(q1);
 
     if (n > 1)
-       factors2 = factorize(q1)
+       factors2 = factorize(q1);
        for j = 1:factorial(n)
          factors = [factors(:).', factors2(n*(j-1)+1:n*j), a];
        endfor
