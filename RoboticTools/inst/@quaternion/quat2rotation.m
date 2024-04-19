@@ -16,7 +16,12 @@
 ##    along with robotictools.  If not, see <http://www.gnu.org/licenses/>.
 
 
-function n = norm (a)
-  n = sqrt((a * conjugate(a)).re);
-  return
+function R = quat2rotation (Q)
+  E = scalarmul(Q,1/norm(Q));
+  a = re(E);
+  v = im(E);
+  b = v(1);
+  c = v(2);
+  d = v(3);
+  R = [a^2+b^2-c^2-d^2,2*(b*c-a*d),2*(b*d+a*c);2*(b*c+a*d),a^2-b^2+c^2-d^2,2*(c*d-a*b);2*(b*d-a*c),2*(c*d+a*b),a^2-b^2-c^2+d^2];
 endfunction
