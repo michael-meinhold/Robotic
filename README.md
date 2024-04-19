@@ -28,4 +28,4 @@ aus.
        q = quaternion ([1, 2, 3, 4])
 
     erzeugt.
-2. Polynome in X mit Koeffizienten aus $$\mathbb{H}$$ 
+2. Polynome in X mit Koeffizienten aus $\mathbb{H}$ 
