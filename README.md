@@ -3,7 +3,7 @@
 ## Paket in tar.gz packen
 Wechseln Sie in das Verzeichnis, in dem sich der Ordner robotictools befindet und führen Sie in der Kommandozeile den Befehl
 
-       tar cfvz robotictools.tar.gz robotictools
+       tar cfvz robotictools.tar.gz RoboticTools
 
 aus.     
 
@@ -27,4 +27,5 @@ aus.
 
        q = quaternion ([1, 2, 3, 4])
 
-    erzeugt.  
+    erzeugt.
+2. Polynome in X mit Koeffizienten aus $$\mathbb{H}$$ 
