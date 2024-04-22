@@ -16,11 +16,20 @@
 ##    along with robotictools.  If not, see <http://www.gnu.org/licenses/>.
 
 
-function R = quat2rotation (Q, eps)
-  a = re(Q);
-  v = im(Q);
-  b = v(1);
-  c = v(2);
-  d = v(3);
-  R = [a^2+b^2-c^2-d^2,2*(b*c-a*d),2*(b*d+a*c);2*(b*c+a*d),a^2-b^2+c^2-d^2,2*(c*d-a*b);2*(b*d-a*c),2*(c*d+a*b),a^2-b^2-c^2+d^2];
+function v = getaxis2 (Q, eps)
+  if (nargin == 1)
+    eps = 1.0E-09;
+  endif
+
+  n = sqrt(norm(Q));
+  if (abs(1.0 - n) >= eps)
+    error("@getaxis2: quaternion is not a unit quaternion / versor");
+  endif
+
+  m = norm(im(Q));
+  if (m <= eps)
+    error("@getaxis2: vector part of quaternion is zero");
+  endif
+
+  v = im(Q)*1/m;
 endfunction

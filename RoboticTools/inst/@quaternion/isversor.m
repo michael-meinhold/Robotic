@@ -15,11 +15,16 @@
 ##    You should have received a copy of the GNU General Public License
 ##    along with robotictools.  If not, see <http://www.gnu.org/licenses/>.
 
-function [A, u] = screwmotion (a, p, phi, lambda)
-  a = a(:).';
-  p = p(:).';
-  A = rodriguesmatrix (phi, a);
-  t = lambda/sqrt(dot(a, a)) * a;
-  u = p' - A*(p') + t';
-endfunction
 
+function c = isversor (Q, eps)
+  if (nargin == 1)
+    eps = 1.0E-09;
+  endif
+
+  if (abs(norm(Q) - 1.0) >= eps)
+    c = false;
+    return
+  endif
+
+  c = true;
+endfunction

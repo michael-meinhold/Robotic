@@ -17,6 +17,6 @@
 
 
 function n = norm (a)
-  n = sqrt((a * conjugate(a)).re);
+  n = (a * conjugate(a)).re;
   return
 endfunction
