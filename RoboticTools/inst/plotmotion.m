@@ -16,22 +16,30 @@
 ##    along with robotictools.  If not, see <http://www.gnu.org/licenses/>.
 
 function M = plotmotion (symA,syma,t,t1,t2,n)
-
-# usage: plotmotion (symA,syma,t,t1,t2,n)
-#
-# This function generates a sequence of
-# poses of the moving frame of an contineous one-parameter
-# spatial motion.
-#
-# Therefor the package 'symbolic' is needed.
-# Run 'pkg install symbolic-3.2.1.tar.gz' to install package,
-# afterwards run 'pkg load symbolic'.
-#
-# Inputs of the function 'plotmotion' are the pair consisting of an
-# orthogonal matrix 'symA' and a translation vector 'syma',
-# both depending of a symbolic parameter 't'. The spatial motion
-# of the moving frame is visualised within the interval 't1<t<t2'
-# by 'n' steps.
+  % Syntax: plotmotion (symA,syma,t,t1,t2,n)
+  %
+  % Beschreibung:
+  %   Diese Funktion berechnet eine Sequenz von Lagen eines Gangkoordinatensystems
+  %   unter einem stetigen einparametrigen Bewegungsvorgangs im dreidimensionalen
+  %   Raum.
+  %
+  %   Die Sequenz wird graphisch ausgegeben. Hierfür wird das Paket 'symbolic'
+  %   benötigt. Nach dem Download der Datei ist im Befehlsfenster
+  %   'pkg install symbolic-3.2.1.tar.gz' für die Installation auszuführen,
+  %   anschließend 'pkg load symbolic'.
+  %
+  % Eingabeparameter:
+  %   Für die Berechnung sind Parametrisierung der orthogonalen Matrix
+  %   'symA' und des Translationsvektors 'syma' in Abhängigkeit des gemeinsamen
+  %   Parameters 't' anzugeben. Der räumliche Bewegungsvorgang eines mitbewegten
+  %   kartesischen Koordinatensystems wird im Intervall 't1<t<t2' in 'n'
+  %   Schritten visualisisert.
+  %
+  % Hilfe:
+  %   help plotmotion
+  %
+  % Datum: [29.04.2025]
+  % Version: [1.0.1]
 
 list=linspace(t1,t2,n);
 

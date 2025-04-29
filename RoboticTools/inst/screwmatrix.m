@@ -16,6 +16,39 @@
 ##    along with robotictools.  If not, see <http://www.gnu.org/licenses/>.
 
 function [A, u] = screwmatrix (a, p, phi, lambda)
+  % Syntax: screwmatrix (a, p, phi, lambda)
+  %
+  % Beschreibung:
+  %   Diese Funktion berechnet mit Hilfe der Formel von Rodrigues eine orthogonale
+  %   dreireihige Matrix 'A' zur Beschreibung einer Schraubung um eine Gerade durch einen
+  %   Punkt 'p' sowie anschließender Translation mit Translationsvektor 'u' in
+  %   Richtung dieser Gerade.
+  %   Bei der Berechnung der Matrix 'A' wird die Funktion 'rodriguesmatrix' benutzt.
+  %
+  % Eingabeparameter:
+  %   Für die Berechnung sind die - nicht notwendig normierte - Schraubachsen-
+  %   richtung 'a', ein Punkt 'p' der Schraubachse, der Drehwinkel 'phi' und
+  %   der Schraubparameter 'lambda' anzugeben. Der Vektor 'a' ist verschieden
+  %   vom Nullvektor zu wählen.
+  %
+  % Ausgabe:
+  %   geoordnetes Paar, bestehend aus dreireihiger orthogonaler Matrix 'A' zur
+  %   Beschreibung der Drehung sowie dreidimensionalem Vektor 'u' in Richtung der
+  %   Schraubachse
+  %
+  % Beispiel:
+  %   a = [1; 2; 3];
+  %   p = [1; 2; 3];
+  %   phi = pi/3;
+  %   t = 1.5;
+  %   screwmatrix(a,p,phi,lambda)
+  %
+  % Hilfe:
+  %   help screwmatrix
+  %
+  % Datum: [29.04.2025]
+  % Version: [1.0.1]
+
   a = a(:).';
   p = p(:).';
   A = rodriguesmatrix (phi, a);

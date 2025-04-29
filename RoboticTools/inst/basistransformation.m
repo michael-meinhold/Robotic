@@ -15,35 +15,79 @@
 ##    You should have received a copy of the GNU General Public License
 ##    along with robotictools.  If not, see <http://www.gnu.org/licenses/>.
 
-## Spaltenvektoren von B1 definieren das Rastkoordinatensystem
-## Spaltenvektoren von B2 definieren das Gangkoordinatensystem
+function T = basistransformation (B1, B2, eps, varargin)
+  % Syntax: T = basistransformation(B1, B2, eps)
+  %
+  % Eingabeparameter:
+  %   B1: Orthogonale Basis (Matrix)
+  %   B2: Orthogonale Basis (Matrix)
+  %   eps: Toleranz (Wert)
+  %
+  % Ausgabeparameter:
+  %   T: transponierte Matrix (Matrix)
+  %
+  % Beschreibung:
+  %   Diese Funktion berechnet die transponierte Matrix zwischen zwei orthogonalen Basen.
+  %   Die Funktion überprüft, ob die Eingabeparameter orthogonale Matrizen sind und ob die
+  %   Determinante der Eingabeparameter gleich 1 ist.
+  %
+  % Optionale Argumente:
+  %   'verbose': Aktiviert die Ausgabe von Debug-Informationen
+  %   'tolerance': Ändert die Toleranz für die Überprüfung der Orthogonalität
+  %
+  % Beispiele:
+  %   basistransformation([1 0 0; 0 1 0; 0 0 1], [1 0 0; 0 0 1 ; 0 -1 0])
+  %   basistransformation([1 0 0; 0 1 0; 0 0 1], [1 0 0; 0 0 1 ; 0 -1 0], 1e-9)
+  %   basistransformation([1 0 0; 0 1 0; 0 0 1], [1 0 0; 0 0 1 ; 0 -1 0], 1e-9, 'verbose')
+  %
+  % Hilfe:
+  %   help basistransformation
+  %
+  % Datum: [01.04.2025]
+  % Version: [1.0.1]
 
-
-function T = basistransformation (B1, B2, eps)
   if (nargin == 2)
     eps = 1.0E-09;
   endif
 
-  if (norm(B1*B1'-eye(3), "fro") >= eps)
-    error("@basistransformation: first argument must be orthogonal!");
+  % Eingabeparameter B1 und B2 werden auf ihre Eigenschaften geprüft
+  if (!isnumeric(B1) || !isnumeric(B2))
+    error("@basistransformation: Eingabeparameter müssen Matrizen sein!");
   endif
 
-  if (norm(B2*B2'-eye(3), "fro") >= eps)
-    error("@basistransformation: second argument must be orthogonal!");
+  if (norm(B1*transpose(B1)-eye(3), "fro") >= eps)
+    error("@basistransformation: erstes Argument muss orthogonal sein!");
+  endif
+
+  if (norm(B2*transpose(B2)-eye(3), "fro") >= eps)
+    error("@basistransformation: zweites Argument muss orthogonal sein!");
   endif
 
   if (abs(det(B1) - 1.0) >= eps)
-    error("@basistransformation: determinant of first argument is not equal to 1!")
+    error("@basistransformation: Determinante des ersten Arguments ist nicht gleich 1!");
   endif
 
   if (abs(det(B2) - 1.0) >= eps)
-    error("@basistransformation: determinant of second argument is not equal to 1!")
+    error("@basistransformation: Determinante des zweiten Arguments ist nicht gleich 1!");
   endif
 
+  T = zeros(3, 3);
   for i = 1:3
     for j = 1:3
       T(i,j) = dot(B1(:,i), B2(:,j));
     endfor
   endfor
   T;
+
+  % Aktiviert die Ausgabe von Debug-Informationen
+  if ismember('verbose', varargin)
+    disp('Debug-Informationen aktiviert');
+    disp('Eingabeparameter:');
+    disp('B1:');
+    disp(B1);
+    disp('B2:');
+    disp(B2);
+    disp('eps:');
+    disp(eps);
+  endif
 endfunction
