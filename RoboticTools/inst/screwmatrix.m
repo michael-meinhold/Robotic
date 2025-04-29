@@ -32,9 +32,9 @@ function [A, u] = screwmatrix (a, p, phi, lambda)
   %   vom Nullvektor zu wählen.
   %
   % Ausgabe:
-  %   geoordnetes Paar, bestehend aus dreireihiger orthogonaler Matrix 'A' zur
-  %   Beschreibung der Drehung sowie dreidimensionalem Vektor 'u' in Richtung der
-  %   Schraubachse
+  %   geordnetes Paar, bestehend aus dreireihiger orthogonaler Matrix 'A' zur
+  %   Beschreibung der Drehung sowie dreidimensionalem Translationsvektor 'u'
+  %   in Richtung der Schraubachse
   %
   % Beispiel:
   %   a = [1; 2; 3];
