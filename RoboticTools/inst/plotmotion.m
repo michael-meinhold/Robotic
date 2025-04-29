@@ -29,11 +29,18 @@ function M = plotmotion (symA,syma,t,t1,t2,n)
   %   anschließend 'pkg load symbolic'.
   %
   % Eingabeparameter:
-  %   Für die Berechnung sind Parametrisierung der orthogonalen Matrix
+  %   Für die Berechnung sind Parametrisierung der  orthogonalen Matrix
   %   'symA' und des Translationsvektors 'syma' in Abhängigkeit des gemeinsamen
-  %   Parameters 't' anzugeben. Der räumliche Bewegungsvorgang eines mitbewegten
-  %   kartesischen Koordinatensystems wird im Intervall 't1<t<t2' in 'n'
-  %   Schritten visualisisert.
+  %   Parameters 't' anzugeben. Die Variable 't' ist zuvor mittels 'syms t' als
+  %   symbolische Variable zu deklarieren.
+  %   Der räumliche Bewegungsvorgang eines mitbewegten kartesischen
+  %   Koordinatensystems wird im Intervall 't1<t<t2' in 'n' Schritten visualisisert.
+  %
+  % Beispiel:
+  %   syms t
+  %   symA = [cos(t),-sin(t),0; sin(t),cos(t),0; 0,0,sym(1)];
+  %   syma = [0; 0; sym(1.5,'f')*t];
+  %   plotmotion(symA,syma,t,0,pi,5)
   %
   % Hilfe:
   %   help plotmotion
